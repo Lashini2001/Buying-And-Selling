@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from "axios";
-import NavBar from '../NavBar/NavBar';
+import Header from "../Dashboard/Header/Header"
 import PdfButton from './PdfButton';
+import "./order.css"
 
 export default class OrderList extends Component {
 
@@ -74,22 +75,24 @@ export default class OrderList extends Component {
     return (
       <div>
 
-<NavBar/>
-        <div className='container' style={{ marginTop:"40px"}}>
+        <Header/>
+        <div className='container' id="orderContainer">
          <div className='col-lg-3 mt-2 mb-2'>
             <input  className="form-control"
             type='search'
             placeholder='Search'
             name="serchQuery"
-            style={{marginLeft:"1000px"}}
+            style={{marginLeft:"20px", borderRadius:"20px"}}
             onChange={this.handleSearchArea}/>
             
            
 
          </div>
         
+         <button className='btn btn-success' id='btnAddNew'><a href='add/order' style={{textDecoration:"none", color:"white"}}>
+         <i className='fas fa-plus'></i>&nbsp;Add New</a></button>
 
-        <h2>All Orders</h2>
+        <h2 id='btnAllOrder'>All Orders</h2>
         <br></br>
          <table className='table table-hover'>
             <thead>
@@ -106,22 +109,21 @@ export default class OrderList extends Component {
             {this.state.orders.map((orders, index) =>(
                 <tr key={index}>
                     <th scope='row'>{index+1}</th>
+                    <td id='order'>{orders.name}</td>
+                    <td id='order'>{orders.number}</td>
+                    <td id='order'>{orders.oid}</td>
                     <td>
-                        <a href= {`/order/${orders._id}`} style={{textDecoration:"none"}}>
-                        {orders.name}
-                        </a>
-                        </td>
-                    <td>{orders.number}</td>
-                    <td>{orders.oid}</td>
-                    <td>
-                        <a className='btn btn-warning' href={`/editorder/${orders._id}`}>
-                            <i className='fas fa-edit'></i>&nbsp;Edit
+                        <a className='btn' id='btnEdit' href={`/editorder/${orders._id}`}>
+                            <i className='fas fa-edit' id='EditIcon'></i>
                         </a>
                         &nbsp;
-                        <a className='btn btn-danger' href='# ' onClick={() => this.onDelete(orders._id)}>
-                            <i className='fas fa-trash-alt'></i>&nbsp;Delete
+                        <a className='btn' id='btnDelete' href='# ' onClick={() => this.onDelete(orders._id)}>
+                            <i className='fas fa-trash-alt' id='DeleteIcon'></i>
                         </a>
                         &nbsp;<PdfButton order={orders} />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href={`/order/${orders._id}`} id='view'>VIEW</a>
+
                     </td>
                 </tr>
             ))}
@@ -129,8 +131,6 @@ export default class OrderList extends Component {
         </tbody>
          </table>
 
-         <button className='btn btn-success'><a href='add/order' style={{textDecoration:"none", color:"white"}}>
-         <i className='fas fa-plus'></i>&nbsp;Add New</a></button>
         
       </div>
         
