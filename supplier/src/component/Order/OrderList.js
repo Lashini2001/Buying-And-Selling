@@ -118,11 +118,11 @@ retrieveOrder() {
     if (!ctxB || !orders) return;
 
     if (this.chartInstance) {
-      this.chartInstance.destroy(); // Destroy existing chart instance
+      this.chartInstance.destroy(); // when time to time update earler order Destroy existing chart instance
     }
 
     const oidMap = new Map();
-    // Aggregate quantities by product code (oid)
+    // Aggregate quantities by product code (oid)(aggregate = addition)
     orders.forEach(order => {
         const quantity = parseInt(order.quantity); // Parse quantity as integer
         if (!isNaN(quantity)) {

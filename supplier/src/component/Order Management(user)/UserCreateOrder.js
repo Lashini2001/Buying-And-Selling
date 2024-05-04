@@ -162,6 +162,7 @@ export default function UserCreateOrder() {
     {!/^[A-Za-z\s]+$/.test(name) && (
         <p style={{ color: "red", fontSize: "14px", marginTop: "5px" }}>Please enter only letters and spaces</p>
     )}
+    
 </div>
 
 <div className="mb-3">
