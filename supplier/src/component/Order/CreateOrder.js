@@ -156,6 +156,7 @@ export default function CreateOrder() {
     <label for="exampleInputPassword1" className="form-label" id="createOrder">Amount</label>
     <input type="number" className="form-control" id="exampleInputPassword1" placeholder="Enter Amount"
         min={"1"}
+       
         onChange={(e) => {
             setAmount(e.target.value);
             setTotalAmount(e.target.value * quantity);

@@ -89,7 +89,7 @@ router.get("/order/:id",(req, res) =>{
     })
   })
 })
-
+//create control class to routes
 // POST endpoint for sending emails
 router.post('/send-email/lashini', (req, res) => {
   const { subject, message } = req.body;
